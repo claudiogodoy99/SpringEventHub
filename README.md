@@ -332,7 +332,7 @@ value.serializer = class org.apache.kafka.common.serialization.StringSerializer
 2023-05-19T02:26:20.150Z  INFO 1204 --- [ taskExecutor-3] br.com.b3.eventhub.EventHubApplication   : Sent 20000 messages in 18301ms, 65570.18742145239/min
 ```
 
-## Processes 10
+## Processes 1
 
 ### Batch size 2048
 
