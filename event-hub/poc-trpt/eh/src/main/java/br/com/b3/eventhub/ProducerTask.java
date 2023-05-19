@@ -51,6 +51,6 @@ class ProducerTask implements Runnable {
     EventHubApplication.cdl.countDown();
     var elapsed = sw.getTotalTimeMillis();
     double rate = 60000. * numMessages / elapsed;
-    logger.info("Core {} sent {} messages in {}ms, {}/min", id, numMessages, sw.getTotalTimeMillis(), rate);
+    logger.info("Thread {} sent {} messages in {}ms, {}/min", id, numMessages, sw.getTotalTimeMillis(), rate);
   }
 }

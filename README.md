@@ -1,5 +1,12 @@
 # Event Hub Premium 8 PU
 
+## Run test application
+
+```bash
+./mvnw clean package -DskipTests
+java -Xms4096m -Xmx8192m -jar target/eventhub-0.0.1-SNAPSHOT.jar <messages/thread> <multiplicador cores>
+```
+
 ## Summary
 
 | Processes | Batch size | Messages/min         |
@@ -686,7 +693,7 @@ value.serializer = class org.apache.kafka.common.serialization.StringSerializer
 2023-05-19T03:27:43.154Z  INFO 11392 --- [ taskExecutor-4] br.com.b3.eventhub.EventHubApplication   : Sent 20000 messages in 44727ms, 26829.4318867798/min
 2023-05-19T03:27:43.241Z  INFO 11392 --- [ taskExecutor-5] br.com.b3.eventhub.EventHubApplication   : Sent 20000 messages in 44814ms, 26777.34636497523/min
 2023-05-19T03:27:43.749Z  INFO 11392 --- [ taskExecutor-3] br.com.b3.eventhub.EventHubApplication   : Sent 20000 messages in 45322ms, 26477.207537178412/min
-05-19T03:27:46.864Z  INFO 9096 --- [ taskExecutor-2] br.com.b3.eventhub.EventHubApplication   : Sent 20000 messages in 48346ms, 24821.08137177843/min
+2023-05-19T03:27:46.864Z  INFO 9096 --- [ taskExecutor-2] br.com.b3.eventhub.EventHubApplication   : Sent 20000 messages in 48346ms, 24821.08137177843/min
 2023-05-19T03:27:46.899Z  INFO 9096 --- [ taskExecutor-4] br.com.b3.eventhub.EventHubApplication   : Sent 20000 messages in 48382ms, 24802.612541854407/min
 2023-05-19T03:27:47.068Z  INFO 9096 --- [ taskExecutor-6] br.com.b3.eventhub.EventHubApplication   : Sent 20000 messages in 48551ms, 24716.277728574078/min
 2023-05-19T03:27:47.770Z  INFO 9096 --- [ taskExecutor-5] br.com.b3.eventhub.EventHubApplication   : Sent 20000 messages in 49254ms, 24363.503471799246/min

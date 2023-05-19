@@ -20,23 +20,27 @@ public class EventHubApplication implements CommandLineRunner {
   @Autowired
   private ObjectProvider<ProducerTask> producerTask;
 
-  public static int cores = Runtime.getRuntime().availableProcessors();
-  public static CountDownLatch cdl = new CountDownLatch(cores);
+  public static int threads = Runtime.getRuntime().availableProcessors();
+  public static CountDownLatch cdl;
 
   public static void main(String[] args) {
+    if (args.length == 2) {
+      threads = threads * Integer.parseInt(args[1]);
+    }
+    cdl = new CountDownLatch(threads);
     SpringApplication.run(EventHubApplication.class, args);
   }
 
   @Override
   public void run(String... args) throws Exception {
     int numMessages = 10;
-    if (args.length == 1) {
+    if (args.length == 2) {
       numMessages = Integer.parseInt(args[0]);
     }
 
     var sw = new StopWatch();
     sw.start();
-    for (int i = 0; i < cores; i++) {
+    for (int i = 0; i < threads; i++) {
       var producer = producerTask.getObject(numMessages, i);
       taskExecutor.execute(producer);
     }
@@ -44,9 +48,10 @@ public class EventHubApplication implements CommandLineRunner {
     cdl.await();
     sw.stop();
     Logger logger = LoggerFactory.getLogger(EventHubApplication.class);
-    int total = numMessages * cores;
+    int total = numMessages * threads;
     var elapsed = sw.getTotalTimeMillis();
     double rate = 60000. * total / elapsed;
     logger.info("Final: Sent {} messages in {}ms, {}/min", total, sw.getTotalTimeMillis(), rate);
+    System.exit(0);
   }
 }
