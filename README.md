@@ -13,7 +13,7 @@
 
 ### Event Hubs Metrics
 
-![Alt text](images/Saving.png)
+![Alt text](event-hub/poc-trpt/eh/images/Saving.png)
 
 ### VM Specs
 
