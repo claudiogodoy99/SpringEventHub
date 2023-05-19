@@ -24,7 +24,7 @@ class ProducerTask implements Runnable {
 
   @Override
   public void run() {
-    Logger logger = LoggerFactory.getLogger(EventHubApplication.class);
+    Logger logger = LoggerFactory.getLogger(ProducerTask.class);
     var flux = Flux
         .range(0, numMessages)
         .map(i -> {
@@ -48,9 +48,9 @@ class ProducerTask implements Runnable {
         .blockLast();
 
     sw.stop();
+    EventHubApplication.cdl.countDown();
     var elapsed = sw.getTotalTimeMillis();
     double rate = 60000. * numMessages / elapsed;
-    logger.info("Sent {} messages in {}ms, {}/min", numMessages, sw.getTotalTimeMillis(), rate);
-
+    logger.info("Core {} sent {} messages in {}ms, {}/min", id, numMessages, sw.getTotalTimeMillis(), rate);
   }
 }

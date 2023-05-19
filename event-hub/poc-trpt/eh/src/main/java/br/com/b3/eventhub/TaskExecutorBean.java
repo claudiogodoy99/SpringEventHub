@@ -10,10 +10,9 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @Configuration
 class TaskExecutorBean {
 
-  private int cores = Runtime.getRuntime().availableProcessors();
-
   @Bean
   public TaskExecutor taskExecutor() {
+    var cores = EventHubApplication.cores;
     var executor = new ThreadPoolTaskExecutor();
     executor.setCorePoolSize(cores);
     executor.setMaxPoolSize(cores);
