@@ -4,7 +4,7 @@
 
 ```bash
 ./mvnw clean package -DskipTests
-java -Xms4096m -Xmx8192m -jar target/eventhub-0.0.1-SNAPSHOT.jar <messages/thread> <multiplicador cores>
+java -Xms4096m -Xmx8192m -jar target/eventhub-0.0.1-SNAPSHOT.jar <messages/thread> <core multiplier>
 ```
 
 ## Summary
