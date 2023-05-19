@@ -1,0 +1,31 @@
+spring:
+  server:
+    port: 0
+  kafka:
+    bootstrap-servers: loading-teste.servicebus.windows.net:9093
+    properties:
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://loading-teste.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=6xch6ndyoLk37RF89MG9l1luA9WYSikDm+AEhDgRivU=";
+    security:
+      protocol: SASL_SSL
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      batch-size: 716800
+      properties:
+        linger.ms: 5
+        compression.type: none
+        buffer.memory: 33554432
+        client.dns.lookup: use_all_dns_ips
+        connections.max.idle.ms: 540000
+        delivery.timeout.ms: 120000
+
+      # batch-size: 2048
+      # properties:
+      #   linger.ms: 0
+      #   compression.type: none
+      #   buffer.memory: 33554432
+      #   client.dns.lookup: use_all_dns_ips
+      #   connections.max.idle.ms: 540000
+      #   delivery.timeout.ms: 120000
+
