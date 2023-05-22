@@ -2,10 +2,10 @@ spring:
   server:
     port: 0
   kafka:
-    bootstrap-servers: loading-teste.servicebus.windows.net:9093
+    bootstrap-servers: [...].servicebus.windows.net:9093
     properties:
       sasl.mechanism: PLAIN
-      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://loading-teste.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=6xch6ndyoLk37RF89MG9l1luA9WYSikDm+AEhDgRivU=";
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=...";
     security:
       protocol: SASL_SSL
     producer:
